@@ -93,6 +93,15 @@ img {
   padding: 5px; /* Some padding */
   width: 150px; /* Set a small width */
 }
+.style_image{
+  width: 100%;
+ height: auto;
+ background-position: center;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+ -o-background-size: cover;
+
 
 /* Add a hover effect (blue shadow) */
 
