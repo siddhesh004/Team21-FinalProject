@@ -1,9 +1,9 @@
-const BookApp = {
+const RefereeApp = {
     data() {
       return {
 
         // "books": {title:{}, author:{}, year_pub:{}, pages:{}, msrp:{}}
-        books:[]
+        referees:[]
       }
     },
     computed: {
@@ -15,12 +15,12 @@ const BookApp = {
           return "$ " + d;
       },
 
-    fetchBookData() {
-          fetch('/api/books')
+    fetchRefereeData() {
+          fetch('/api/referees')
           .then( response => response.json() )
           .then( (responseJson) => {
               console.log(responseJson);
-              this.books = responseJson;
+              this.referees = responseJson;
           })
           .catch( (err) => {
               console.error(err);
@@ -29,11 +29,11 @@ const BookApp = {
       },
     created() {
         // this.fetchUserData();
-        this.fetchBookData();
+        this.fetchRefereeData();
     }
 
   }
 
 
 
-  Vue.createApp(BookApp).mount('#bookApp');
+  Vue.createApp(RefereeApp).mount('#refereeApp');

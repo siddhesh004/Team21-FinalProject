@@ -42,51 +42,27 @@
 
     <main class="row">
 
-      <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="bookApp">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="refereeApp">
 
 
         <table class="table" id="mytable">
          <thead>
-           <th>Title</th>
-           <th>Author</th>
-           <th>Year Published</th>
-           <th>Page Count</th>
-           <th>MSRP</th>
+           <th>Referee ID</th>
+           <th>Name</th>
+           <th>Age</th>
+           <th>Grade</th>
+           <th>Skill Level</th>
          </thead>
          <tbody>
-           <tr v-for="book in books">
-                          <td>{{ book.title }}</td>
-                          <td>{{ book.author }}</td>
-                          <td>{{ book.year_pub }}</td>
-                          <td>{{ book.pages }}</td>
-                          <td>{{ prettyDollar(book.msrp) }}</td>
+           <tr v-for="r in referees">
+                          <td>{{ r.referee_id }}</td>
+                          <td>{{ r.ref_name }}</td>
+                          <td>{{ r.age }}</td>
+                          <td>{{ r.grade }}</td>
+                          <td>{{ r.skill }}</td>
           </tr>
        </tbody>
         </table>
-
-
-
-      </div>
-
-
-        <form action="#">
-          <div class="form-group">
-          <label for="name">Book Name:</label><br>
-          <input type="text" id="name" name="name" value=""><br>
-          <label for="aname">Author Name:</label><br>
-          <input type="text" id="aname" name="aname" value=""><br>
-          <label for="year">Year:</label><br>
-          <input type="text" id="year" name="year" value=""><br>
-          <label for="pages">Page Count:</label><br>
-          <input type="text" id="pages" name="pages" value=""><br>
-          <label for="msrp">MSRP:</label><br>
-          <input type="text" id="msrp" name="msrp" value=""><br><br>
-          <input type="submit" value="Submit"><br>
-        </form>
-
-      </div>
-
-
 
     </main>
 
@@ -98,7 +74,7 @@
   </body>
   <script src='js/tablesort.min.js'></script>
   <script src="js/index.js"></script>
-    <script src="js/books.js"></script>
+    <script src="js/referees.js"></script>
   <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 
   <script>
