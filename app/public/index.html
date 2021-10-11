@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div class="col-6">
+    <title>Naomi Moreno </title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+    </div>
+    <div class="col-6">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    </div>
+
+  </head>
+  <body>
+    <div class="container" id="sidApp">
+      <header class="row">
+        <h1>  Naomi Moreno </h1>
+      </header>
+
+      <nav class = "row nav navbar-default">
+      <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#myMenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myMenu">
+        <ul class = "nav navbar-nav">
+          <li><a href="index.html"> Home </a></li>
+          <li><a href="books.html"> My Books </a></li>
+          <li><a href="aboutme.html"> About Me </a></li>
+        </ul>
+      </div>
+      </nav>
+
+    <main class="row">
+
+      <div class="col-lg-8 col-md-7 col-sm-12 col-12">
+        <form v-on:submit.prevent="fetchUserData">
+              <button type="submit">Refresh</button>
+        </form>
+
+        <br>
+
+        Name: {{result.name.first}} {{result.name.last}}<br>
+        Country: {{result.location.country}}<br>
+        Age: {{result.dob.age}} <br>
+        DOB: {{prettyBirthday}} <br>
+
+        Email Address: <a href="'mailto:'+result.email">{{result.email}}</a>
+
+      </div>
+
+      <div class="col-lg-4  col-md-5 col-sm-12 col-12">
+
+
+          <img v-bind:src="result.picture.large" alt="Profile Picture">
+
+      </div>
+    </main>
+
+
+    <footer class="myfooter">
+      {{result.name.first}} {{result.name.last}} | Phone: {{result.phone}} | {{result.location.street.number}} {{result.location.street.name}}
+    </footer>
+    </div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
