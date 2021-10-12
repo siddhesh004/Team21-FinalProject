@@ -1,5 +1,5 @@
 header{
-  background-color: blue;
+  background-color: red;
   color:white;
   font-family: sans-serif;
 }
@@ -87,12 +87,7 @@ th[role=columnheader]:not(.no-sort):hover:after {
   font-family: sans-serif;
 }
 
-img {
-  border: 1px solid #ddd; /* Gray border */
-  border-radius: 4px;  /* Rounded border */
-  padding: 5px; /* Some padding */
-  width: 150px; /* Set a small width */
-}
+
 .style_image{
   width: 100%;
  height: auto;
@@ -102,6 +97,186 @@ img {
  background-size: cover;
  -o-background-size: cover;
 
+ .main_head {
+   margin:50px;
+   color:white;
+ }
+
+ .main_html {
+ width: 100%;
+ height: 100%;
+ clip: auto;
+ position: absolute;
+ overflow: hidden;
+ }
+
+ .main_main {
+   margin:225px;
+   color:white;
+   font-weight: bold;
+   text-align:center;
+ }
+
+ .main_h1 {
+   font-size:500%;
+   font-weight:bolder;
+   color:white;
+ }
+
+ a {
+   background-color: purple;
+   color: white;
+   padding:10px;
+   font-size:125%;
+ }
+
+ .a:hover, .a:visited, .a:active, .a:focus{
+   color: goldenrod;
+ }
+
+ nav {
+   /*text-align:right;*/
+   margin:25px;
+   opacity:1;
+ }
+
+ .navbar-toggle {
+   background-color:purple;
+ }
+
+ .nav_links:hover {
+   color: purple;
+ }
+
+ main {
+   justify-content: center;
+ }
+
+ .bg {
+   background: url(img/soccer.png) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+ }
+
+ footer {
+   position: relative;
+   margin-top: 150px;
+   text-align:center;
+   padding-bottom:10px;
+   color:white;
+ }
+ .card {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   width:100%;
+   height:100%;
+   text-align: center;
+   font-family: arial;
+   padding:50px;
+   display: flex;
+   justify-content: center;
+   align-items:center;
+ }
+
+ .icon-bar{
+   color:#eeeeee;
+ }
+
+ .price {
+   margin:10px;
+   color: black;
+   font-size: 30px;
+   font-weight:bold;
+   border-style:solid;
+   border-radius:5px;
+   justify-content: center;
+   align-items:center;
+ }
+
+ .card button {
+   border: none;
+   outline: 0;
+   padding: 12px;
+   color: white;
+   background-color: #000;
+   text-align: center;
+   cursor: pointer;
+   width: 100%;
+   font-size: 18px;
+ }
+
+ .card button:hover {
+   opacity: 0.7;
+ }
+
+ h1 {
+   color: purple;
+ }
+
+ .aboutText {
+   padding-top: 50px;
+   padding-left: 50px;
+   background-color: #eeeeee;
+ }
+
+ .about_p {
+   margin-top: 50px;
+   font-size: large;
+ }
+
+ .about_footer {
+   position: relative;
+   margin-top: 150px;
+   text-align:center;
+   padding: 9px;
+   color:white;
+   background-color: grey;
+ }
+
+ .cart-icon{
+   float: right;
+ }
+
+ form {
+   background-color: #eeeeee;
+   padding: 20px;
+ }
+
+ input, textarea, select {
+   margin-bottom: 20px;
+ }
+
+ .active_page {
+   color: goldenrod;
+ }
+
+ .btn1 {
+   background-color: purple;
+   color: white;
+ }
+
+ .btn1:active, .btn1:hover, .btn1:focus {
+   background-color: purple;
+   color: goldenrod;
+ }
+
+
+ .cent{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ #read_more{
+   margin:10px;
+   font-size: large;
+ }
+
+ input{
+   margin-left: 10px;
+   margin-bottom: 20px;
+ }
 
 /* Add a hover effect (blue shadow) */
 
