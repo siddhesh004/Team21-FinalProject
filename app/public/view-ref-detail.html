@@ -48,10 +48,45 @@
            <h1 class='main_h1'> Welcome to Indiana Referees Association!</h1>
           </div>
           <div>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Referee
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button"> Referee1</button>
+                <button class="dropdown-item" type="button">Referee2</button>
+                <button class="dropdown-item" type="button">Referee3</button>
+              </div>
+            </div>
               <!-- Put Drop Down Option Selector for Referees Here -->
-          </div>
+              
+          
           <div>
               <!-- Put table showing GameID, Field and Time here, Use same Table as View-Refs if you want -->
+              <table class="table" id="mytable">
+                <thead>
+                 <th>Referee ID</th>
+                 <th>Name</th>
+                 <th>Age</th>
+                 <th>Grade</th>
+                 <th>Skill Level</th>
+                 <th>GameID</th>
+                 <th>Field</th>
+                 <th>Time</th>
+               </thead>
+               <tbody>
+                 <tr v-for="r in referees">
+                   <td>{{ r.referee_id }}</td>
+                   <td>{{ r.ref_name }}</td>
+                   <td>{{ r.age }}</td>
+                   <td>{{ r.grade }}</td>
+                   <td>{{ r.skill }}</td>
+                   <td>  ID  </td>
+                   <td> Field </td>
+                   <td>  Time </td>
+                </tr>
+                </tbody>
+              </table>
           </div>
         </div>
       </main>
