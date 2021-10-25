@@ -1,8 +1,8 @@
-create table referee (referee_id int primary key, ref_name char(50), age int, grade int, skill int);
+create table referee (referee_id int primary key auto_increment, ref_name char(50), age int, grade int, skill int);
 
 create table game ( game_id int primary key, field_name char(50), game_time datetime);
 
-create table assignment (referee_id int, game_id int ,status char(50),primary key(referee_id,game_id), FOREIGN KEY (referee_id) REFERENCES referee(referee_id), 
+create table assignment (referee_id int, game_id int ,status char(50),primary key(referee_id,game_id), FOREIGN KEY (referee_id) REFERENCES referee(referee_id),
 FOREIGN KEY (game_id) REFERENCES game(game_id));
 
 
@@ -27,4 +27,3 @@ INSERT INTO assignment values (1004, 102, "Assigned");
 INSERT INTO assignment values (1001, 103, "Assigned");
 INSERT INTO assignment values (1002, 103, "Assigned");
 INSERT INTO assignment values (1004, 103, "Assigned");
-

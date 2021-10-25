@@ -69,56 +69,30 @@
               </tr>
               </tbody>
             </table>
-          </div>
-        </div>
+
+
         <div>
           <!-- Put Add Referee Form here -->
           <h2> Add Referee to Database</h2>
+          <form v-on:submit.prevent="postNewRef">
 
-          <form action=""method="post">
+          <label for="ref_name">Referee Name:</label><br>
+          <input type="text" v-model="refForm.ref_name"  class="form-control" id="ref_name" name="ref_name"><br>
+          <label for="age">Age:</label><br>
+          <input type="text" v-model="refForm.age"  class="form-control" id="age" name="age"><br>
+          <label for="grade">Grade:</label><br>
+          <input type="text" v-model="refForm.grade"  class="form-control" id="grade" name="grade"><br>
+          <label for="skill">Skill Level:</label><br>
+          <input type="text" v-model="refForm.skill"  class="form-control" id="skill" name="skill" ><br><br>
+          <button type="submit" class="btn btn-primary" name = "button" id = "button">Submit</button>
+        </form>
 
-            <label for="ID">ID: </label><input type="text" name="ID" id="ID">
 
-          <br>
 
-          <br>
-
-          <form action=""method="post">
-
-          <label for="Name">Name: </label><input type="text" name="Name" id="Name">
-
-          <br>
-
-          <br>
-
-          <form action=""method="post">
-
-          <label for="Age">Age: </label><input type="text" name="Age" id="Age">
-
-          <br>
-
-          <br>
-
-          <form action=""method="post">
-
-          <label for="Grade">Grade: </label><input type="text" name="Grade" id="Grade">
-
-          <br>
-
-          <br>
-
-          <form action=""method="post">
-
-          <label for="Skill">Skill: </label><input type="text" name="Skill" id="Skill">
-
-          <br>
-
-          <br>
-
-          <br>
-
-          <input class="button" type="submit" name="order" id="order" value="Submit">
         </div>
+        </div>
+      </div>
+    </div>
 
       </main>
 
@@ -134,11 +108,11 @@
         </div>
       </footer>
     </div>
-    </div>
+
   </body>
   <script src='js/tablesort.min.js'></script>
   <script src="js/index.js"></script>
-    <script src="js/referees.js"></script>
+  <script src="js/referees.js"></script>
   <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 
   <script>

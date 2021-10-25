@@ -3,7 +3,8 @@ const RefereeApp = {
       return {
 
         // "books": {title:{}, author:{}, year_pub:{}, pages:{}, msrp:{}}
-        referees:[]
+        referees:[],
+        refForm: {}
       }
     },
     computed: {
@@ -25,7 +26,31 @@ const RefereeApp = {
           .catch( (err) => {
               console.error(err);
           })
-        }
+        },
+        postNewRef(evt) {
+          //     this.offerForm.studentId = this.selectedStudent.id;
+
+              // console.log("Posting!", this.bookForm);
+              console.log("Posting!");
+
+              fetch('api/referees/create.php', {
+                  method:'POST',
+                  body: JSON.stringify(this.refForm),
+                  headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                  }
+                })
+                .then( response => response.json() )
+                .then( json => {
+                  console.log("Returned from post:", json);
+                  // TODO: test a result was returned!
+                  this.referees = json;
+
+                  // reset the form
+                  this.refForm = {};
+                });
+
+              }
       },
     created() {
         // this.fetchUserData();
