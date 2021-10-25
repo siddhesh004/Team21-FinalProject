@@ -66,6 +66,14 @@
                  <td>{{ r.age }}</td>
                  <td>{{ r.grade }}</td>
                  <td>{{ r.skill }}</td>
+                 <td>
+                   <button type="button" class="btn btn-outline-secondary btn-sm"
+                            v-on:click="selectReferee(r)">Edit
+                   </button>
+                   <button type="button" class="btn btn-outline-secondary btn-sm"
+                            v-on:click="postDeleteReferee(r)">Delete
+                   </button>
+                </td>
               </tr>
               </tbody>
             </table>
@@ -73,8 +81,8 @@
 
         <div>
           <!-- Put Add Referee Form here -->
-          <h2> Add Referee to Database</h2>
-          <form v-on:submit.prevent="postNewRef">
+          <h2> {{ selectedReferee === null ? "Add" : "Edit" }} Referee</h2>
+          <form v-on:submit.prevent="postRef">
 
           <label for="ref_name">Referee Name:</label><br>
           <input type="text" v-model="refForm.ref_name"  class="form-control" id="ref_name" name="ref_name"><br>
@@ -84,7 +92,7 @@
           <input type="text" v-model="refForm.grade"  class="form-control" id="grade" name="grade"><br>
           <label for="skill">Skill Level:</label><br>
           <input type="text" v-model="refForm.skill"  class="form-control" id="skill" name="skill" ><br><br>
-          <button type="submit" class="btn btn-primary" name = "button" id = "button">Submit</button>
+          <button type="submit" class="btn btn-primary" name = "button" id = "button"> {{ selectedOffer === null ? "Add" : "Edit" }} Referee</button>
         </form>
 
 
@@ -111,7 +119,7 @@
 
   </body>
   <script src='js/tablesort.min.js'></script>
-  <script src="js/index.js"></script>
+
   <script src="js/referees.js"></script>
   <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 
