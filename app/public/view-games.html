@@ -47,32 +47,28 @@
       <main class='main_main'>
         <div class='row'>
           <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-           <h1 class='main_h1'>Our Referees:</h1>
+           <h1 class='main_h1'>Our Games:</h1>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="refereeApp">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="gameApp">
 
 
             <table class="table" id="mytable">
               <thead>
-               <th>Referee ID</th>
-               <th>Name</th>
-               <th>Age</th>
-               <th>Grade</th>
-               <th>Skill Level</th>
+               <th>Game ID</th>
+               <th>Field Name</th>
+               <th>Date Time</th>
              </thead>
              <tbody>
-               <tr v-for="r in referees">
-                 <td>{{ r.referee_id }}</td>
-                 <td>{{ r.ref_name }}</td>
-                 <td>{{ r.age }}</td>
-                 <td>{{ r.grade }}</td>
-                 <td>{{ r.skill }}</td>
+               <tr v-for="g in games">
+                 <td>{{ g.game_id }}</td>
+                 <td>{{ g.field_name }}</td>
+                 <td>{{ g.game_time }}</td>
                  <td>
                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                            v-on:click="selectReferee(r)">Edit
+                            v-on:click="selectGame(g)">Edit
                    </button>
                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                            v-on:click="postDeleteReferee(r)">Delete
+                            v-on:click="postDeleteGame(g)">Delete
                    </button>
                 </td>
               </tr>
@@ -82,18 +78,14 @@
 
         <div>
           <!-- Put Add Referee Form here -->
-          <h2> {{ selectedReferee === null ? "Add" : "Edit" }} Referee</h2>
-          <form v-on:submit.prevent="postRef">
+          <h2> {{ selectedGame === null ? "Add" : "Edit" }} Game</h2>
+          <form v-on:submit.prevent="postGame">
 
-          <label for="ref_name">Referee Name:</label><br>
-          <input type="text" v-model="refForm.ref_name"  class="form-control" id="ref_name" name="ref_name"><br>
-          <label for="age">Age:</label><br>
-          <input type="text" v-model="refForm.age"  class="form-control" id="age" name="age"><br>
-          <label for="grade">Grade:</label><br>
-          <input type="text" v-model="refForm.grade"  class="form-control" id="grade" name="grade"><br>
-          <label for="skill">Skill Level:</label><br>
-          <input type="text" v-model="refForm.skill"  class="form-control" id="skill" name="skill" ><br><br>
-          <button type="submit" class="btn btn-primary" name = "button" id = "button"> {{ selectedReferee === null ? "Add" : "Edit" }} Referee</button>
+          <label for="ref_name">Field Name:</label><br>
+          <input type="text" v-model="gameForm.field_name"  class="form-control" id="field_name" name="field_name"><br>
+          <label for="age">Date/Time:</label><br>
+          <input type="text" v-model="gameForm.game_time"  class="form-control" id="game_time" name="game_time"><br>
+          <button type="submit" class="btn btn-primary" name = "button" id = "button"> {{ selectedGame === null ? "Add" : "Edit" }} Game</button>
         </form>
 
 
@@ -121,7 +113,7 @@
   </body>
   <script src='js/tablesort.min.js'></script>
 
-  <script src="js/referees.js"></script>
+  <script src="js/games.js"></script>
   <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 
   <script>
