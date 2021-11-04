@@ -2,8 +2,14 @@ create table referee (referee_id int primary key auto_increment, ref_name char(5
 
 create table game ( game_id int primary key auto_increment, field_name char(50), game_time datetime);
 
-create table assignment (referee_id int, game_id int ,status char(50),primary key(referee_id,game_id), FOREIGN KEY (referee_id) REFERENCES referee(referee_id),
-FOREIGN KEY (game_id) REFERENCES game(game_id));
+  CREATE TABLE assignment (
+  a_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  referee_id int NOT NULL REFERENCES referee(referee_id)
+  ON DELETE CASCADE ON UPDATE CASCADE,
+  game_id int NOT NULL REFERENCES game(game_id)
+  ON DELETE CASCADE ON UPDATE CASCADE,
+  status varchar(20) NOT NULL
+  );
 
 
 -- Dummy Data
