@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class='main_html'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Indiana Referees Association</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class='bg'>
+    <div class='container-fluid'>
+      <header class='main_head'>
+      </header>
+
+      <nav>
+      <div class='row'>
+        <div>
+          <header class="row">
+            <h1> <img src = img/iu.gif width="150px">Indiana Referees Association</h1>
+          </header>
+        </div>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-toggle ='collapse' data-target='#mymenu'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+        </div>
+        <div class='collapse navbar-collapse' id='mymenu'>
+        <ul class="nav navbar-nav">
+          <li><a href='index.html' class=" nav_links">Home</a> </li>
+          <li><a href='view-refs.html' class="active_page nav_links">View Referees</a> </li>
+          <li><a href='view-games.html' class="nav_links">View Games</a> </li>
+          <li><a href='view-ref-detail.html' class="nav_links">Details of Referees</a> </li>
+          <li><a href='#' class="nav_links">About Us</a> </li>
+        </ul>
+
+        </div>
+      </div>
+      </nav>
+
+      <main class='main_main'>
+        <div class='row'>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id="refereeApp">
+           <h1 class='main_h1'>View Reports for Referees:</h1>
+           <table class="table" id="mytable">
+             <thead>
+              <th>Referee ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Grade</th>
+              <th>Skill Level</th>
+            </thead>
+            <tbody>
+              <tr v-for="r in referees">
+                <td>{{ r.referee_id }}</td>
+                <td>{{ r.ref_name }}</td>
+                <td>{{ r.age }}</td>
+                <td>{{ r.grade }}</td>
+                <td>{{ r.skill }}</td>
+                <td>
+                  <button type="button" class="btn btn-outline-secondary btn-sm"
+                           v-on:click="selectReferee(r)">Select to Generate Reports
+                  </button>
+
+               </td>
+             </tr>
+             </tbody>
+           </table>
+           <h3> {{ selectedReferee === null ? "" : "Past Games for the Referee" }}</h3>
+           <table class="table" id="mytable">
+             <thead>
+              <th>Field Name</th>
+              <th>Time</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <tr v-for="past in pastassignmentrefs">
+                <td>{{ past.field_name }}</td>
+                <td>{{ past.game_time }}</td>
+                <td>{{ past.status}}</td>
+             </tr>
+             </tbody>
+           </table>
+           <h3> {{ selectedReferee === null ? "" : "Future Games for the Referee" }}</h3>
+           <table class="table" id="mytable">
+             <thead>
+              <th>Field Name</th>
+              <th>Time</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <tr v-for="future in futureassignmentrefs">
+                <td>{{ future.field_name }}</td>
+                <td>{{ future.game_time }}</td>
+                <td>{{ future.status}}</td>
+             </tr>
+             </tbody>
+           </table>
+          </div>
+
+      </div>
+    </div>
+
+      </main>
+
+
+      <footer>
+        <div class="row">
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+          © 2021, Indiana Referees Association. All Rights Reserved.
+          <a href='#' class="btn1"> Terms & Conditions</a>
+          <a href='#' class="btn1"> Privacy Policy</a>
+          <a href='#' class="btn1"> Return Policy</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  </body>
+  <script src='js/tablesort.min.js'></script>
+
+  <script src="js/referees.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
+  <script>
+    new Tablesort(document.getElementById('mytable'));
+  </script>
+</html>

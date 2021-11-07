@@ -95,22 +95,30 @@
           <div>
               <!-- Put table showing GameID, Field and Time here, Use same Table as View-Refs if you want -->
               <table class="table" id="mytable">
-                <thead></thead>
-                 <th>GameID</th>
-                 <th>Field</th>
+                <thead>
+                 <th>Assignment ID</th>
+                 <th>Field Name</th>
+                 <th>Referee ID</th>
                  <th>Time</th>
+                 <th>Status</th>
+
                </thead>
                <tbody>
-                 <tr>
-                   <td>  100 </td>
-                   <td> Anfield </td>
-                   <td>  2001-01-21 23:59:59 </td>
+                 <tr v-for="a in assignments">
+                   <td>{{ a.a_id }}</td>
+                   <td>{{ a.field_name }}</td>
+                   <td>{{ a.referee_id }}</td>
+                   <td>{{ a.game_time}}</td>
+                   <td>{{ a.status }}</td>
+
+
+                   <td>
+                     <button type="button" class="btn btn-outline-secondary btn-sm"
+                              v-on:click="declineAssignment(a)">Decline Assignment
+                     </button>
+
+                  </td>
                 </tr>
-                <tr>
-                  <td>  101</td>
-                  <td> Stamford Bridge </td>
-                  <td>  2021-07-13 11:00:00 </td>
-               </tr>
                 </tbody>
               </table>
           </div>

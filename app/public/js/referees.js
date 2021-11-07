@@ -2,9 +2,13 @@ const RefereeApp = {
     data() {
       return {
         referees:[],
+        assignmentrefs:[],
+        pastassignmentrefs:[],
+        futureassignmentrefs:[],
         refForm: {},
         assignmentForm: {},
         games:[],
+        assignments:[],
         gameForm: {},
         selectedGame: null,
         selectedReferee: null
@@ -21,7 +25,78 @@ const RefereeApp = {
       selectReferee(o) {
         this.selectedReferee = o;
         this.refForm = Object.assign({}, this.selectedReferee);
+        this.fetchAssignmentsforReferee(o);
       },
+      fetchAssignments(){
+
+
+        fetch('/api/assignment')
+        .then( response => response.json() )
+        .then( (responseJson) => {
+            console.log(responseJson);
+            this.assignments = responseJson;
+        })
+        .catch( (err) => {
+            console.error(err);
+        })
+
+    },
+      fetchAssignmentsforReferee(o){
+        this.selectedReferee = o;
+        this.fetchPastAssignmentsforReferee(o);
+        this.fetchFutureAssignmentsforReferee(o);
+
+        fetch('api/reports/index.php', {
+            method:'POST',
+            body: JSON.stringify(o),
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json())
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.assignmentrefs = json;
+            });
+
+    },
+      fetchPastAssignmentsforReferee(o){
+        this.selectedReferee = o;
+
+        fetch('api/reports/past.php', {
+            method:'POST',
+            body: JSON.stringify(o),
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json())
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.pastassignmentrefs = json;
+            });
+
+    },
+    fetchFutureAssignmentsforReferee(o){
+      this.selectedReferee = o;
+
+      fetch('api/reports/future.php', {
+          method:'POST',
+          body: JSON.stringify(o),
+          headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          })
+          .then( response => response.json())
+          .then( json => {
+            console.log("Returned from post:", json);
+            // TODO: test a result was returned!
+            this.futureassignmentrefs = json;
+          });
+
+  },
       postRef(evt) {
         if (this.selectedReferee === null) {
             this.postNewRef(evt);
@@ -87,6 +162,28 @@ const RefereeApp = {
 
                   });
               },
+              declineAssignment(a) {
+                    if (!confirm("Are you sure you want to delete the record for "+a.a_id+"?")) {
+                        return;
+                    }
+                    console.log("Starting to Decline");
+                    fetch('api/assignment/decline.php', {
+                        method:'POST',
+                        body: JSON.stringify(a),
+                        headers: {
+                            "Content-Type": "application/json; charset=utf-8"
+                          }
+                        })
+                        .then( response => response.json() )
+                        .then( json => {
+                          console.log("Returned from post:", json);
+                          // TODO: test a result was returned!
+                          this.assignments = json;
+
+
+
+                        });
+                    },
           postEditReferee(evt) {
               this.refForm.referee_id = this.selectedReferee.referee_id;
 
@@ -229,6 +326,7 @@ const RefereeApp = {
     created() {
         this.fetchGameData();
         this.fetchRefereeData();
+        this.fetchAssignments();
 
     }
 
