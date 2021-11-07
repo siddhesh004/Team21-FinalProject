@@ -46,60 +46,13 @@
 
       <main class='main_main'>
         <div class='row'>
-          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-           <h1 class='main_h1'>Our Referees:</h1>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id="refereeApp">
+           <h1 class='main_h1'><a href="ref-reports.html">Click to View Referee Reports</a></h1>
+           <br>
+           <h1 class='main_h1'><a href="game-reports.html">Click to View Game Reports</a></h1>
+
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="refereeApp">
 
-
-            <table class="table" id="mytable">
-              <thead>
-               <th>Referee ID</th>
-               <th>Name</th>
-               <th>Age</th>
-               <th>Grade</th>
-               <th>Skill Level</th>
-             </thead>
-             <tbody>
-               <tr v-for="r in referees">
-                 <td>{{ r.referee_id }}</td>
-                 <td>{{ r.ref_name }}</td>
-                 <td>{{ r.age }}</td>
-                 <td>{{ r.grade }}</td>
-                 <td>{{ r.skill }}</td>
-                 <td>
-                   <button type="button" class="btn btn-outline-secondary btn-sm"
-                            v-on:click="selectReferee(r)">Edit
-                   </button>
-                   <button type="button" class="btn btn-outline-secondary btn-sm"
-                            v-on:click="postDeleteReferee(r)">Delete
-                   </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-
-
-        <div>
-          <!-- Put Add Referee Form here -->
-          <h2> {{ selectedReferee === null ? "Add" : "Edit" }} Referee</h2>
-          <form v-on:submit.prevent="postRef">
-
-          <label for="ref_name">Referee Name:</label><br>
-          <input type="text" v-model="refForm.ref_name"  class="form-control" id="ref_name" name="ref_name"><br>
-          <label for="age">Age:</label><br>
-          <input type="text" v-model="refForm.age"  class="form-control" id="age" name="age"><br>
-          <label for="grade">Grade:</label><br>
-          <input type="text" v-model="refForm.grade"  class="form-control" id="grade" name="grade"><br>
-          <label for="skill">Skill Level:</label><br>
-          <input type="text" v-model="refForm.skill"  class="form-control" id="skill" name="skill" ><br><br>
-          <button type="submit" class="btn btn-primary" name = "button" id = "button"> {{ selectedReferee === null ? "Add" : "Edit" }} Referee</button>
-        </form>
-
-
-
-        </div>
-        </div>
       </div>
     </div>
 

@@ -2,11 +2,13 @@ const RefereeApp = {
     data() {
       return {
         referees:[],
+        dategames:[],
         assignmentrefs:[],
         pastassignmentrefs:[],
         futureassignmentrefs:[],
         refForm: {},
         assignmentForm: {},
+        dateForm: {},
         games:[],
         assignments:[],
         gameForm: {},
@@ -217,6 +219,31 @@ const RefereeApp = {
                   this.postEditGame(evt);
               }
             },
+            findDateRange(evt) {
+              //     this.offerForm.studentId = this.selectedStudent.id;
+
+                  // console.log("Posting!", this.bookForm);
+                  console.log("Finding Date Range! for", this.dateForm);
+
+
+                  fetch('api/reports/date.php', {
+                      method:'POST',
+                      body: JSON.stringify(this.dateForm),
+                      headers: {
+                        "Content-Type": "application/json; charset=utf-8"
+                      }
+                    })
+                    .then( response => response.json() )
+                    .then( json => {
+                      console.log("Returned from post:", json);
+                      // TODO: test a result was returned!
+                      this.dategames = json;
+
+                      // reset the form
+                      this.dateForm = {};
+                    });
+
+                  },
 
           fetchGameData() {
                 fetch('/api/games')
