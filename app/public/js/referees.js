@@ -164,6 +164,7 @@ const RefereeApp = {
 
 
                   });
+                  this.fetchRefereeData();
               },
               declineAssignment(a) {
                     if (!confirm("Are you sure you want to delete the record for "+a.a_id+"?")) {
@@ -308,9 +309,10 @@ const RefereeApp = {
                         // reset the form
                         this.gameForm = {};
                       });
+                      this.fetchGameData();
 
                     },
-              postDeleteReferee(g) {
+              postDeleteGame(g) {
                     if (!confirm("Are you sure you want to delete this record for?")) {
                         return;
                     }
@@ -330,7 +332,9 @@ const RefereeApp = {
 
 
 
+
                         });
+                        
                     },
                 postEditGame(evt) {
                     this.gameForm.game_id = this.selectedGame.game_id;
@@ -376,6 +380,7 @@ const RefereeApp = {
                             // reset the form
                             this.assignmentForm = {};
                           });
+                          this.fetchAssignments();
 
                         },
 
