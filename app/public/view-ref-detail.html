@@ -51,9 +51,36 @@
           <div id="refereeApp">
             <form v-on:submit.prevent="postAssignment">
 
-            <label for="status">Status</label>
+
+              <div class="dropdown">
+                <label for="referee_id">Select Referee:  </label>
+                <select class="form-select" aria-label="Default select example" v-model="assignmentForm.referee_id"
+                                id="referee_id">
+  
+  
+  
+                        <option v-for="r in referees" :value= 'r.referee_id' >{{ r.ref_name }}</option>
+  
+                </select>
+              </div>
+  
+              <div>
+                <div class="dropdown">
+                  <label for="game_id">Select Game:  </label>
+                  <select class="form-select" aria-label="Default select example" v-model="assignmentForm.game_id"
+                                  id="game_id">
+  
+  
+  
+                          <option v-for="g in games" :value= 'g.game_id' >{{ g.game_id }} {{g.field_name}} </option>
+  
+                  </select>
+                </div>
+
+            
 
             <div class="dropdown">
+              <label for="status">Status:  </label>
               <select class="form-select" aria-label="Default select example" v-model="assignmentForm.status"
                               id="status">
 
@@ -65,28 +92,7 @@
               </select>
             </div>
 
-            <div class="dropdown">
-              <select class="form-select" aria-label="Default select example" v-model="assignmentForm.referee_id"
-                              id="referee_id">
-
-
-
-                      <option v-for="r in referees" :value= 'r.referee_id' >{{ r.ref_name }}</option>
-
-              </select>
-            </div>
-
-            <div>
-              <div class="dropdown">
-                <select class="form-select" aria-label="Default select example" v-model="assignmentForm.game_id"
-                                id="game_id">
-
-
-
-                        <option v-for="g in games" :value= 'g.game_id' >{{ g.game_id }}</option>
-
-                </select>
-              </div>
+            
             <button type="submit" class="btn btn-primary" name = "button" id = "button"> Submit Assignment</button>
               <!-- Put Drop Down Option Selector for Referees Here -->
           </form>

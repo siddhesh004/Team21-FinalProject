@@ -108,7 +108,9 @@
                 </tbody>
               </table>
           </div>
-          <p><a v-on:click="findCsvDateRange" download>Export Report as CSV</a></p>
+          <p><a v-bind:href="'/api/reports/date.php/?referee_id=' + dateForm.referee_id +
+             '&start_date=' + dateForm.start_date + '&end_date=' + dateForm.end_date + '&format=csv'" download>
+             <button>Export Report as CSV</button></a></p>
 
       </div>
     </div>

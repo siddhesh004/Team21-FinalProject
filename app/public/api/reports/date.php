@@ -5,19 +5,19 @@
 //     exit;
 // }
 
-try {
-    $_POST = json_decode(
-                file_get_contents('php://input'),
-                true,
-                2,
-                JSON_THROW_ON_ERROR
-            );
-} catch (Exception $e) {
-    header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-    // print_r($_POST);
-    // echo file_get_contents('php://input');
-    exit;
-}
+// try {
+//     $_POST = json_decode(
+//                 file_get_contents('php://input'),
+//                 true,
+//                 2,
+//                 JSON_THROW_ON_ERROR
+//             );
+// } catch (Exception $e) {
+//     header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
+//     // print_r($_POST);
+//     // echo file_get_contents('php://input');
+//     exit;
+// }
 
 require("class/DbConnection.php");
 
@@ -30,31 +30,55 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
-$stmt = $db->prepare(
+$sql =
   'SELECT game.field_name, game.game_time, assignment.status, assignment.referee_id, assignment.a_id FROM game INNER JOIN assignment
 
     ON game.game_id = assignment.game_id
 
-    where assignment.referee_id = ?  AND game.game_time>? AND game.game_time<? ;'
-);
+    where assignment.referee_id = ?  AND game.game_time>? AND game.game_time<? ;';
 
-$stmt->execute([
-    $_POST['referee_id'],
-    $_POST['start_date'],
-    $_POST['end_date']
-]);
+
+$vars = [ $_GET['referee_id'],
+
+          $_GET['start_date'],
+
+          $_GET['end_date'] ];
+
+$stmt = $db->prepare($sql);
+
+$stmt->execute($vars);
+
 
 $dategames = $stmt->fetchAll();
 
-// Step 3: Convert to JSON
-$json = json_encode($dategames, JSON_PRETTY_PRINT);
+if (isset($_GET['format']) && $_GET['format'] == 'csv' ) {
 
-// Get auto-generated PK from DB
-// https://www.php.net/manual/en/pdo.lastinsertid.php
-// $pk = $db->lastInsertId();
+    header('Content-Type: text/csv');
+  
+    echo "AssignmentID, Field Name, Referee ID, Game Date,\"Status\"\r\n";
+  
+  
+  
+    foreach($dategames as $u) {
+  
+        echo $u['a_id'] . "," .$u['field_name'].','.$u['referee_id']. "," .$u['game_time']. "," .$u['status']."\r\n";
+  
+    }
+  
+  
+  
+  } else {
+  
+    $json = json_encode($dategames, JSON_PRETTY_PRINT);
+  
+  
+  
+    // Step 4: Output
+  
+    header('Content-Type: application/json');
+  
+    echo $json;
+  
+  }
 
-// Step 4: Output
-// Here, instead of giving output, I'm redirecting to the SELECT API,
-// just in case the data changed by entering it
-header('HTTP/1.1 303 See Other');
-echo $json;
+

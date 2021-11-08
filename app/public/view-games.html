@@ -84,7 +84,7 @@
           <label for="ref_name">Field Name:</label><br>
           <input type="text" v-model="gameForm.field_name"  class="form-control" id="field_name" name="field_name"><br>
           <label for="age">Date/Time:</label><br>
-          <input type="text" v-model="gameForm.game_time"  class="form-control" id="game_time" name="game_time"><br>
+          <input type="datetime-local" v-model="gameForm.game_time"  class="form-control" id="game_time" name="game_time"><br>
           <button type="submit" class="btn btn-primary" name = "button" id = "button"> {{ selectedGame === null ? "Add" : "Edit" }} Game</button>
         </form>
 
