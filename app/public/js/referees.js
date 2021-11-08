@@ -11,6 +11,7 @@ const RefereeApp = {
         dateForm: {},
         games:[],
         assignments:[],
+        uaassignments:[],
         gameForm: {},
         selectedGame: null,
         selectedReferee: null
@@ -240,10 +241,44 @@ const RefereeApp = {
                       this.dategames = json;
 
                       // reset the form
-                      this.dateForm = {};
+
                     });
 
                   },
+                  findCsvDateRange(evt) {
+                    //     this.offerForm.studentId = this.selectedStudent.id;
+
+                        // console.log("Posting!", this.bookForm);
+                        console.log("Finding Date Range CSV! for", this.dateForm);
+
+
+                        fetch('api/reports/CSVdate.php', {
+                            method:'POST',
+                            body: JSON.stringify(this.dateForm),
+                            headers: {
+                              "Content-Type": "application/json; charset=utf-8"
+                            }
+                          })
+                          return;
+
+
+                        },
+
+                  fetchUnassigned(evt) {
+                    //     this.offerForm.studentId = this.selectedStude
+
+
+                    fetch('/api/reports/unassigned.php')
+                    .then( response => response.json() )
+                    .then( (responseJson) => {
+                        console.log(responseJson);
+                        this.uaassignments = responseJson;
+                    })
+                    .catch( (err) => {
+                        console.error(err);
+                    })
+
+                        },
 
           fetchGameData() {
                 fetch('/api/games')
@@ -354,6 +389,7 @@ const RefereeApp = {
         this.fetchGameData();
         this.fetchRefereeData();
         this.fetchAssignments();
+        this.fetchUnassigned();
 
     }
 

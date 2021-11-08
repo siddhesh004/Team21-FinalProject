@@ -55,7 +55,7 @@
 
          <label for="startdate" class="form-label">Select Start date</label>
 
-         <input type="date" class="form-control"  id="startdate" required="required" v-model="dateForm.start_date">
+         <input type="date" class="form-control"  id="start_date" required="required" v-model="dateForm.start_date">
 
        </div>
 
@@ -63,7 +63,7 @@
 
          <label for="enddate" class="form-label">Select End date</label>
 
-         <input type="date"  class="form-control" id="enddate" required="required" v-model="dateForm.end_date">
+         <input type="date"  class="form-control" id="end_date" required="required" v-model="dateForm.end_date">
 
        </div>
 
@@ -84,7 +84,9 @@
 
      </form>
           </div>
+
           <div>
+
               <!-- Put table showing GameID, Field and Time here, Use same Table as View-Refs if you want -->
               <table class="table" id="mytable">
                 <thead>
@@ -106,6 +108,7 @@
                 </tbody>
               </table>
           </div>
+          <p><a v-on:click="findCsvDateRange" download>Export Report as CSV</a></p>
 
       </div>
     </div>
